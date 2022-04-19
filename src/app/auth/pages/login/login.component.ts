@@ -21,8 +21,12 @@ export class LoginComponent {
 
   login() {
     const { email, password } = this.miFormulario.value;
-    this.authService.login(email, password).subscribe((res) => {
-      this.router.navigateByUrl('/dashboard');
+    this.authService.login(email, password).subscribe((ok) => {
+      if (ok) {
+        this.router.navigateByUrl('/dashboard');
+      } else {
+        //TODO: mostrar mensaje de error
+      }
     });
   }
 }
